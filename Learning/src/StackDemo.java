@@ -30,21 +30,40 @@ public class StackDemo {
 	public void print() {
 
 		for (Object object : objects) {
-			System.out.println((int) object);
+			if (object != null)
+				System.out.println((int) object);
 		}
 
+	}
+
+	public int min() {
+
+		int result = 0;
+
+		for (int i = 0; i <= objects.length - 1; i++) {
+			for (int j = 0; j <= objects.length - 1; j++) {
+				if ((objects[i] != null) && objects[j] != null) {
+					int x = (int) objects[i];
+					int y = (int) objects[j];
+					if (x < j) {
+						result = x;
+					}
+				}
+			}
+		}
+
+		return result;
 	}
 
 	public static void main(String... ar) {
 		StackDemo demo = new StackDemo(10);
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 10; i > 0; i--) {
 			demo.push(i);
 		}
 
-		demo.print();
-		demo.pop();
-		demo.print();
+		//demo.print();
+		System.out.println(demo.min());
 	}
 
 }
