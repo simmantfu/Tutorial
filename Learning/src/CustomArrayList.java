@@ -1,10 +1,12 @@
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class CustomArrayList<V> implements Iterable<V> {
 
 	private static final int INIT_CAPACITY = 10;
 	Object[] objects;
 	private int pointer = 0;
+	private int start = 0, end;
 
 	public CustomArrayList() {
 		// TODO Auto-generated constructor stub
@@ -17,6 +19,7 @@ public class CustomArrayList<V> implements Iterable<V> {
 
 	private void init(int capacity) {
 		objects = new Object[capacity];
+		end = objects.length - 1;
 	}
 
 	public void add(Object obj) {
@@ -52,33 +55,64 @@ public class CustomArrayList<V> implements Iterable<V> {
 		}
 	}
 
+	@Override
+	public Iterator<V> iterator() {
+		// TODO Auto-generated method stub
+		return new CustomIterator();
+	}
+
+	class CustomIterator implements Iterator<V> {
+		private int cursor;
+
+		public CustomIterator() {
+            this.cursor = CustomArrayList.this.start;
+        }
+		
+		public boolean hasNext(){
+			return this.cursor<=CustomArrayList.this.end;
+		}
+		
+		 public V next() {
+	            if(this.hasNext()) {
+	                int current = cursor;
+	                cursor ++;
+	                return (V) objects[current];
+	            }
+	            throw new NoSuchElementException();
+	        }
+		
+		
+
+	}
+	
 	public static void main(String... strings) {
 		CustomArrayList<Integer> arrayList = new CustomArrayList<>(15);
 		for (int i = 0; i < 15; i++) {
 			arrayList.add(i);
 		}
 
-		for (int i = 0; i < 15; i++) {
-			System.out.println(arrayList.get(i));
+		for(int a:arrayList){
+			System.out.println(a);
 		}
-
-		arrayList.remove(10);
-
-		for (int i = 0; i < 15; i++) {
-			System.out.println(arrayList.get(i));
-		}
-
-		arrayList.set(0, 10);
-
-		for (int i = 0; i < 15; i++) {
-			System.out.println(arrayList.get(i));
-		}
+		
+		
+//		for (int i = 0; i < 15; i++) {
+//			System.out.println(arrayList.get(i));
+//		}
+//
+//		arrayList.remove(10);
+//
+//		for (int i = 0; i < 15; i++) {
+//			System.out.println(arrayList.get(i));
+//		}
+//
+//		arrayList.set(0, 10);
+//
+//		for (int i = 0; i < 15; i++) {
+//			System.out.println(arrayList.get(i));
+//		}
 	}
 
-	@Override
-	public Iterator<V> iterator() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }
