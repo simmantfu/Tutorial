@@ -41,14 +41,7 @@ class Ther extends Thread {
 
 	public void run() {
 
-		// solution of Race condition
-		// synchronized (data) {
-		// int i = data.getI();
-		// data.setValue(i+1);
-		// }
-
-		// Code with race issue
-		int i = data.getI();
+        int i = data.getI();
 		data.setValue(i + 1);
 	}
 
