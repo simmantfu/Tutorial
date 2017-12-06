@@ -46,8 +46,8 @@ class LoginUtil {
 	public List<LoginVo> append(List<LoginVo> logList, Supplier... supplier){
 		
 		logList.forEach(k-> {
-			String s  = k.userName+""+supplier[0];
-			String s2 = k.passWord+""+supplier[1];
+			String s  = k.userName+""+supplier[0].get();
+			String s2 = k.passWord+""+supplier[1].get();
 			k.passWord = s2;
 		k.userName = s;
 		});
