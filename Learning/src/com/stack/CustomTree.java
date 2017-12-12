@@ -1,12 +1,13 @@
 package com.stack;
 
-import java.util.TreeMap;
-
 public class CustomTree {
-	static int count = 0;
+	static int leftDepth =0;
+	static int rightDepth =0;
 
 	public static void main(String... strings) {
 
+		
+		
 		CustomT customT = new CustomT(10);
 		customT.add(20);
 		customT.add(4);
@@ -18,6 +19,7 @@ public class CustomTree {
 		customT.add(5);
 		customT.print();
 		customT.printZigZag();
+		customT.checkdepth();
 
 	}
 
@@ -29,12 +31,14 @@ class CustomT {
 
 	CustomT left;
 	CustomT right;
+	
+	
 
 	public CustomT(int data) {
 		this.data = data;
 		this.left = null;
 		this.right = null;
-		CustomTree.count++;
+		
 	}
 
 	public void add(int add) {
@@ -60,7 +64,7 @@ class CustomT {
 	}
 
 	public void print() {
-		System.out.println(this.data + " dgree " + CustomTree.count);
+		System.out.println(this.data);
 		if (this.left != null)
 			this.left.print();
 
@@ -80,4 +84,19 @@ class CustomT {
 		}
 	}
 
+	public void checkdepth() {
+     if(this.left != null){
+    	 CustomTree.leftDepth++;
+    	 this.left.checkdepth();
+     }
+     if(this.right != null){
+    	 CustomTree.rightDepth++;
+    	 this.right.checkdepth();
+     }
+     
+     if(this.left == null && this.right == null)
+     System.out.println( (CustomTree.leftDepth+CustomTree.rightDepth)+1);
+     
+	}
+	
 }
