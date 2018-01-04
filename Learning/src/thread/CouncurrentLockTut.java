@@ -31,6 +31,7 @@ class LockHome{
 		System.out.println("applying lock for "+Thread.currentThread().getName());
 		lock.lock();
 		try {
+			if(message.contains("1"))
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
