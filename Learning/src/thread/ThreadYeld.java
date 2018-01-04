@@ -15,7 +15,7 @@ package thread;
 public class ThreadYeld {
 
 	public static void main(String... strings) {
-		Res rs = new Res();
+		Ress rs = new Ress();
 		Th1 th1 = new Th1(rs);
 		Th2 th2 = new Th2(rs);
 
@@ -25,7 +25,7 @@ public class ThreadYeld {
 
 }
 
-class Res {
+class Ress {
 
 	public void runner() {
 
@@ -42,9 +42,9 @@ class Res {
 
 class Th1 extends Thread {
 
-	Res rs;
+	Ress rs;
 
-	Th1(Res rs) {
+	Th1(Ress rs) {
 		this.rs = rs;
 		super.setName("test1");
 	}
@@ -66,9 +66,9 @@ class Th1 extends Thread {
 
 class Th2 extends Thread {
 
-	Res rs;
+	Ress rs;
 
-	Th2(Res rs) {
+	Th2(Ress rs) {
 		this.rs = rs;
 	}
 
