@@ -26,6 +26,7 @@ class A{
 
 
 class B extends A{
+	
 	static void hello(){
 		System.out.println("from hello B");
 	}
