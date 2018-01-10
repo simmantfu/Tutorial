@@ -8,7 +8,6 @@ public class Premutation2 {
 
 	static void getPrem(String s) {
 		
-
 		int stringCount = fact(s.length());
 
 		System.out.println(stringCount);
