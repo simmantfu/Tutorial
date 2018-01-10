@@ -7,6 +7,7 @@ import java.util.TreeSet;
 public class Premutation2 {
 
 	static void getPrem(String s) {
+		
 
 		int stringCount = fact(s.length());
 
