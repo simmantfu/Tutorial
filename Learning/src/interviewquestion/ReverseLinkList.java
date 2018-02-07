@@ -9,8 +9,15 @@ public class ReverseLinkList {
 		link.add(1);
 		link.add(2);
 		link.add(3);
+		link.add(4);
+		link.add(5);
+		link.add(6);
 
-		link.printRev();
+		link.print();
+
+		link.delete(3);
+
+		link.print();
 	}
 
 }
@@ -21,7 +28,7 @@ class Link<T> {
 	Node<T> start;
 
 	public void add(T data) {
-		Node<T> node = new Node(data, null);
+		Node<T> node = new Node<T>(data, null);
 
 		if (this.start == null) {
 			start = node;
@@ -51,6 +58,19 @@ class Link<T> {
 			printRev(node.next);
 
 		System.out.println(node.data);
+
+	}
+
+	public void delete(int k) {
+
+		Node<T> temp = start;
+
+		for (int i = 1; i < k - 1; i++) {
+			temp = temp.next;
+		}
+
+		Node<T> tmp2 = temp.next;
+		temp.next = tmp2.next;
 
 	}
 
